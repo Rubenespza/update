@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TECNM | Panel de Administración</title>
+    <link rel="stylesheet" href="admin-dashboard.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo-section">
+            <img src="img/logo-tecnm1.png" alt="TECNM" class="sidebar-logo">
+            <span class="sidebar-brand">ADMIN TECNM</span>
+        </div>
+
+        <nav class="nav-menu">
+            <a href="#" class="nav-item active" data-section="dashboard">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="14" width="7" height="7"></rect>
+                    <rect x="3" y="14" width="7" height="7"></rect>
+                </svg>
+                <span>DASHBOARD</span>
+            </a>
+
+            <a href="#" class="nav-item" data-section="solicitudes">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                </svg>
+                <span>SOLICITUDES</span>
+            </a>
+
+            <a href="#" class="nav-item" data-section="estudiantes">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <path d="M23 21v-2a4 4 0 00-3-3.87"></path>
+                    <path d="M16 3.13a4 4 0 010 7.75"></path>
+                </svg>
+                <span>ESTUDIANTES</span>
+            </a>
+
+            <a href="#" class="nav-item" data-section="becas">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
+                    <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path>
+                </svg>
+                <span>BECAS</span>
+            </a>
+
+            <a href="#" class="nav-item" data-section="reportes">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21.21 15.89A10 10 0 118 2.83"></path>
+                    <path d="M22 12A10 10 0 0012 2v10z"></path>
+                </svg>
+                <span>REPORTES</span>
+            </a>
+
+            <a href="#" class="nav-item" data-section="configuracion">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                    <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                </svg>
+                <span>CONFIGURACIÓN</span>
+            </a>
+        </nav>
+
+        <a href="login.html" class="nav-item logout">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+            </svg>
+            <span>CERRAR SESIÓN</span>
+        </a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-title">
+                <h1 id="pageTitle">Dashboard Administrativo</h1>
+                <p id="pageSubtitle">Vista general del sistema</p>
+            </div>
+
+            <div class="header-actions">
+                <button class="icon-btn" id="notificationBtn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
+                    </svg>
+                    <span class="notification-badge">5</span>
+                </button>
+                
+                <div class="user-info">
+                    <div class="user-details">
+                        <span class="user-name" id="adminName">Administrador</span>
+                        <span class="user-role">Admin</span>
+                    </div>
+                    <div class="user-avatar">
+                        <img src="https://ui-avatars.com/api/?name=Admin&background=c62828&color=fff" alt="Admin">
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Content Area -->
+        <div class="content-area">
+            <!-- Sección DASHBOARD -->
+            <div class="section-content active" id="dashboard-section">
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card blue">
+                        <div class="stat-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M23 21v-2a4 4 0 00-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 010 7.75"></path>
+                            </svg>
+                        </div>
+                        <div class="stat-details">
+                            <h3>Total Estudiantes</h3>
+                            <p class="stat-number" id="totalStudents">1,234</p>
+                            <span class="stat-change positive">+12% vs mes anterior</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card orange">
+                        <div class="stat-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                            </svg>
+                        </div>
+                        <div class="stat-details">
+                            <h3>Solicitudes Pendientes</h3>
+                            <p class="stat-number" id="pendingRequests">47</p>
+                            <span class="stat-change negative">-8% vs mes anterior</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card green">
+                        <div class="stat-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                            </svg>
+                        </div>
+                        <div class="stat-details">
+                            <h3>Becas Aprobadas</h3>
+                            <p class="stat-number" id="approvedScholarships">892</p>
+                            <span class="stat-change positive">+23% vs mes anterior</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card purple">
+                        <div class="stat-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="12" y1="1" x2="12" y2="23"></line>
+                                <path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"></path>
+                            </svg>
+                        </div>
+                        <div class="stat-details">
+                            <h3>Presupuesto Otorgado</h3>
+                            <p class="stat-number">$2.5M</p>
+                            <span class="stat-change positive">+15% vs mes anterior</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts Section -->
+                <div class="charts-container">
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h3>Solicitudes por Mes</h3>
+                            <select class="chart-filter">
+                                <option>2025</option>
+                                <option>2024</option>
+                            </select>
+                        </div>
+                        <div class="chart-placeholder">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="64" height="64">
+                                <line x1="18" y1="20" x2="18" y2="10"></line>
+                                <line x1="12" y1="20" x2="12" y2="4"></line>
+                                <line x1="6" y1="20" x2="6" y2="14"></line>
+                            </svg>
+                            <p>Gráfico de solicitudes mensuales</p>
+                        </div>
+                    </div>
+
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h3>Distribución de Becas</h3>
+                            <button class="chart-action">Ver detalles</button>
+                        </div>
+                        <div class="chart-placeholder">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="64" height="64">
+                                <path d="M21.21 15.89A10 10 0 118 2.83"></path>
+                                <path d="M22 12A10 10 0 0012 2v10z"></path>
+                            </svg>
+                            <p>Gráfico de distribución por tipo de beca</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="activity-card">
+                    <h3>Actividad Reciente</h3>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <div class="activity-icon blue">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path>
+                                    <circle cx="8.5" cy="7" r="4"></circle>
+                                </svg>
+                            </div>
+                            <div class="activity-details">
+                                <p><strong>Juan Pérez</strong> registró una nueva solicitud de beca</p>
+                                <span class="activity-time">Hace 5 minutos</span>
+                            </div>
+                        </div>
+
+                        <div class="activity-item">
+                            <div class="activity-icon green">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+                                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                                </svg>
+                            </div>
+                            <div class="activity-details">
+                                <p>Beca <strong>"Escribiendo el Futuro"</strong> fue aprobada para María López</p>
+                                <span class="activity-time">Hace 15 minutos</span>
+                            </div>
+                        </div>
+
+                        <div class="activity-item">
+                            <div class="activity-icon orange">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"></path>
+                                </svg>
+                            </div>
+                            <div class="activity-details">
+                                <p><strong>Carlos Ramírez</strong> subió documentos para verificación</p>
+                                <span class="activity-time">Hace 1 hora</span>
+                            </div>
+                        </div>
+
+                        <div class="activity-item">
+                            <div class="activity-icon purple">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                                </svg>
+                            </div>
+                            <div class="activity-details">
+                                <p>Nueva beca <strong>"Excelencia Académica"</strong> ha sido creada</p>
+                                <span class="activity-time">Hace 2 horas</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección SOLICITUDES -->
+            <div class="section-content" id="solicitudes-section">
+                <div class="placeholder-content">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="80" height="80">
+                        <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                    </svg>
+                    <h3>Gestión de Solicitudes</h3>
+                    <p>Aquí podrás ver y administrar todas las solicitudes de becas</p>
+                </div>
+            </div>
+
+            <!-- Sección ESTUDIANTES -->
+            <div class="section-content" id="estudiantes-section">
+                <div class="students-header">
+                    <div class="header-left">
+                        <h2>Gestión de Estudiantes</h2>
+                        <p class="section-description">Administra la base de datos de estudiantes registrados</p>
+                    </div>
+                    <button class="btn-add-student" id="btnAddStudent">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="8" x2="12" y2="16"></line>
+                            <line x1="8" y1="12" x2="16" y2="12"></line>
+                        </svg>
+                        Registrar Estudiante
+                    </button>
+                </div>
+
+                <!-- Buscador y filtros -->
+                <div class="students-filters">
+                    <div class="search-box">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="M21 21l-4.35-4.35"></path>
+                        </svg>
+                        <input type="text" id="searchStudent" placeholder="Buscar por matrícula o nombre...">
+                    </div>
+                    <div class="filter-info">
+                        <span class="total-students">Total: <strong id="totalStudentsCount">0</strong> estudiantes</span>
+                    </div>
+                </div>
+
+                <!-- Tabla de estudiantes -->
+                <div class="students-table-container">
+                    <table class="students-table">
+                        <thead>
+                            <tr>
+                                <th>Matrícula</th>
+                                <th>Nombre Completo</th>
+                                <th>Correo Electrónico</th>
+                                <th>Fecha de Registro</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="studentsTableBody">
+                            <!-- Se llenará dinámicamente -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Estado vacío -->
+                <div class="empty-state" id="emptyState" style="display: none;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="80" height="80">
+                        <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 00-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 010 7.75"></path>
+                    </svg>
+                    <h3>No hay estudiantes registrados</h3>
+                    <p>Comienza registrando tu primer estudiante</p>
+                    <button class="btn-empty-action" onclick="document.getElementById('btnAddStudent').click()">
+                        Registrar Estudiante
+                    </button>
+                </div>
+            </div>
+
+            <!-- Modal de Registro de Estudiante -->
+            <div class="student-modal" id="studentModal" style="display: none;">
+                <div class="modal-overlay" onclick="closeStudentModal()"></div>
+                <div class="modal-content-student">
+                    <div class="modal-header-student">
+                        <h3 id="modalStudentTitle">Registrar Nuevo Estudiante</h3>
+                        <button class="modal-close-student" onclick="closeStudentModal()">&times;</button>
+                    </div>
+                    
+                    <form id="studentForm" class="modal-body-student">
+                        <div class="form-row">
+                            <div class="form-group-student">
+                                <label for="studentMatricula">Matrícula <span class="required">*</span></label>
+                                <input type="text" id="studentMatricula" class="input-student" placeholder="20401234" maxlength="8" required>
+                                <small class="input-hint">8 dígitos numéricos</small>
+                            </div>
+                            <div class="form-group-student">
+                                <label for="studentEmail">Correo Electrónico <span class="required">*</span></label>
+                                <input type="email" id="studentEmail" class="input-student" placeholder="estudiante@tecnm.mx" required>
+                                <small class="input-hint">Correo institucional del estudiante</small>
+                            </div>
+                        </div>
+
+                        <div class="form-group-student">
+                            <label for="studentName">Nombre Completo <span class="required">*</span></label>
+                            <input type="text" id="studentName" class="input-student" placeholder="Juan Carlos Pérez González" required>
+                            <small class="input-hint">Nombre completo como aparece en documentos oficiales</small>
+                        </div>
+
+                        <div class="password-info-box">
+                            <div class="info-icon">
+                                <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+                                </svg>
+                            </div>
+                            <div class="info-content">
+                                <strong>Contraseña por Defecto</strong>
+                                <p>El estudiante podrá ingresar con la contraseña: <code>tecnm2025</code></p>
+                                <p class="info-note">Puede cambiarla desde su perfil una vez que inicie sesión</p>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer-student">
+                            <button type="button" class="btn-cancel-student" onclick="closeStudentModal()">Cancelar</button>
+                            <button type="submit" class="btn-save-student">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                                    <path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"></path>
+                                    <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                                    <polyline points="7 3 7 8 15 8"></polyline>
+                                </svg>
+                                Registrar Estudiante
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Modal de Editar Estudiante -->
+            <div class="student-modal" id="editStudentModal" style="display: none;">
+                <div class="modal-overlay" onclick="closeEditStudentModal()"></div>
+                <div class="modal-content-student">
+                    <div class="modal-header-student">
+                        <h3>Editar Estudiante</h3>
+                        <button class="modal-close-student" onclick="closeEditStudentModal()">&times;</button>
+                    </div>
+                    
+                    <form id="editStudentForm" class="modal-body-student">
+                        <input type="hidden" id="editStudentMatricula">
+                        
+                        <div class="form-group-student">
+                            <label for="editStudentName">Nombre Completo <span class="required">*</span></label>
+                            <input type="text" id="editStudentName" class="input-student" required>
+                        </div>
+
+                        <div class="form-group-student">
+                            <label for="editStudentEmail">Correo Electrónico <span class="required">*</span></label>
+                            <input type="email" id="editStudentEmail" class="input-student" required>
+                        </div>
+
+                        <div class="alert-info">
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+                            </svg>
+                            <span>La matrícula no puede ser modificada</span>
+                        </div>
+
+                        <div class="modal-footer-student">
+                            <button type="button" class="btn-cancel-student" onclick="closeEditStudentModal()">Cancelar</button>
+                            <button type="submit" class="btn-save-student">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                                    <path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"></path>
+                                    <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                                    <polyline points="7 3 7 8 15 8"></polyline>
+                                </svg>
+                                Guardar Cambios
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Sección BECAS -->
+            <div class="section-content" id="becas-section">
+                <div class="placeholder-content">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="80" height="80">
+                        <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
+                        <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path>
+                    </svg>
+                    <h3>Catálogo de Becas</h3>
+                    <p>Crea, edita y administra los programas de becas disponibles</p>
+                </div>
+            </div>
+
+            <!-- Sección REPORTES -->
+            <div class="section-content" id="reportes-section">
+                <div class="placeholder-content">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="80" height="80">
+                        <path d="M21.21 15.89A10 10 0 118 2.83"></path>
+                        <path d="M22 12A10 10 0 0012 2v10z"></path>
+                    </svg>
+                    <h3>Reportes y Estadísticas</h3>
+                    <p>Genera reportes detallados del sistema de becas</p>
+                </div>
+            </div>
+
+            <!-- Sección CONFIGURACIÓN -->
+            <div class="section-content" id="configuracion-section">
+                <div class="placeholder-content">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="80" height="80">
+                        <path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                        <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    </svg>
+                    <h3>Configuración del Sistema</h3>
+                    <p>Ajusta los parámetros y configuraciones generales</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="admin-dashboard.js"></script>
+</body>
+</html>
